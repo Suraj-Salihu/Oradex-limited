@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KYC Form - Alternative Bank | ORADEX LIMITED</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #002F71;
+            --secondary: #1a3a5f;
+            --accent: #4a90e2;
+            --light: #f5f7fa;
+            --gray: #A6A6A6;
+            --dark: #333;
+            --success: #28a745;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-altbank {
+            background-color: #4a90e2;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .btn-altbank:hover {
+            background-color: var(--success);
+            color: white;
+        }
+
+        .btn-submit {
+            background-color: var(--success);
+            font-size: 18px;
+            padding: 15px 40px;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .btn-submit:hover {
+            background-color: #218838;
+        }
+
+        /* Hero Section */
+.hero {
+    position: relative;
+    height: 100vh; /* full screen height */
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    text-align: center;
+    overflow: hidden;
+
+    /* Center hero content */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('images/oradex3.jpg') no-repeat center center / cover;
+    opacity: 0.25;
+    z-index: 0;
+    animation: heroSlide 18s infinite ease-in-out;
+}
+
+        .hero h1 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: white;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 15px;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        .hero .btn {
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        /* Form Section */
+        .form-section {
+            background-color: white;
+            padding: 60px 0;
+        }
+
+        .form-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            padding: 40px;
+        }
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--primary);
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 15px;
+            font-size: 17px;
+        }
+
+        .form-section-title {
+            background-color: var(--light);
+            padding: 15px 10px;
+            margin: 30px 0 20px;
+            border-left: 4px solid var(--accent);
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -10px 20px;
+        }
+
+        .form-group {
+            flex: 1 0 300px;
+            padding: 0 10px;
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--gray);
+            border-radius: 5px;
+            background-color: white;
+            color: var(--dark);
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.2);
+        }
+
+        .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+        }
+
+        .radio-option input {
+            margin-right: 8px;
+        }
+
+        .checkbox-group {
+            margin-top: 10px;
+        }
+
+        .checkbox-option {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .checkbox-option input {
+            margin-right: 8px;
+        }
+
+        .declaration {
+            background-color: var(--light);
+            padding: 20px;
+            border-radius: 5px;
+            margin: 20px -10px;
+            border-left: 4px solid var(--success);
+        }
+
+        .signature-area {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid var(--gray);
+        }
+
+        .signature-group {
+            flex: 1;
+            min-width: 200px;
+            margin-right: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Success Message */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin: 40px auto;
+            max-width: 600px;
+        }
+
+        .success-icon {
+            font-size: 60px;
+            color: var(--success);
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 30px 0 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo {
+            margin-bottom: 15px;
+        }
+
+        .footer-logo h2 {
+            color: white;
+            margin: 0;
+        }
+
+        .footer-logo span {
+            color: var(--accent);
+        }
+
+        .copyright {
+            margin-bottom: -15px;
+            font-size: 13px;
+            opacity: 0.8;
+        }
+
+        .disclaimer {
+            max-width: 800px;
+            margin: 20px auto 0;
+            font-size: 12px;
+            opacity: 0.7;
+            line-height: 1.5;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: var(--shadow);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: var(--transition);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .hero {
+                padding: 150px 0 80px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+
+            .form-container {
+                padding: 20px;
+            }
+
+            .form-group {
+                flex: 1 0 100%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .logo h1 {
+                font-size: 20px;
+            }
+
+            .signature-area {
+                flex-direction: column;
+            }
+
+            .signature-group {
+                margin-right: 0;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-content">
+      <p style="font-size: 40px; font-weight: bold; margin-bottom: -5px;">
+        ORADEX<sup style="font-size: 20px;">&trade;</sup>
+      </p>
+      <h1 style="font-size: 25px;">Alternative Bank Account Opening</h1>
+      <p style="font-size: 15px;">Complete your KYC form to open your Alternative Bank account with Oradex Limited.</p>
+      <a href="#form" class="btn btn-altbank">Fill The Form</a>
+    </div>
+  </div>
+</section>
+
+    <!-- Form Section -->
+    <section class="form-section" id="form">
+        <div class="container">
+            <div class="form-container">
+                <h2 class="form-title">THE ALTERNATIVE BANK (TAB) KYC FORM<br><small>(For Account Opening – Individual)</small></h2>
+                
+                <form id="kycForm">
+                    <!-- SECTION A: PERSONAL INFORMATION -->
+                    <h3 class="form-section-title">SECTION A: PERSONAL DETAILS</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" class="form-control" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="dob">Date of Birth</label>
+                            <input type="date" id="dob" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Gender</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="male" name="gender" value="Male" required>
+                                    <label for="male">Male</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="female" name="gender" value="Female">
+                                    <label for="female">Female</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Marital Status</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="single" name="maritalStatus" value="Single" required>
+                                    <label for="single">Single</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="married" name="maritalStatus" value="Married">
+                                    <label for="married">Married</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="other" name="maritalStatus" value="Other">
+                                    <label for="other">Other</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nationality">Nationality</label>
+                            <input type="text" id="nationality" class="form-control" placeholder="Enter your nationality" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="stateOfOrigin">State of Origin</label>
+                            <input type="text" id="stateOfOrigin" class="form-control" placeholder="Enter your state of origin" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lga">LGA</label>
+                            <input type="text" id="lga" class="form-control" placeholder="Enter your Local Government Area" required>
+                        </div>
+                    </div>
+                    
+                    <!-- SECTION B: CONTACT DETAILS -->
+                    <h3 class="form-section-title">SECTION B: CONTACT DETAILS</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="residentialAddress">Residential Address</label>
+                            <textarea id="residentialAddress" class="form-control" rows="3" placeholder="Enter your full residential address" required></textarea>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City/Town</label>
+                            <input type="text" id="city" class="form-control" placeholder="Enter your city/town" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phoneNumber">Phone Number</label>
+                            <input type="tel" id="phoneNumber" class="form-control" placeholder="Enter your phone number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" placeholder="Enter your email address" required>
+                        </div>
+                    </div>
+                    
+                    <!-- SECTION C: IDENTIFICATION -->
+                    <h3 class="form-section-title">SECTION C: IDENTIFICATION</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nin">NIN</label>
+                            <input type="text" id="nin" class="form-control" placeholder="Enter your NIN" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bvn">BVN</label>
+                            <input type="text" id="bvn" class="form-control" placeholder="Enter your BVN" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Means of Identification (Select One)</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-option">
+                                    <input type="radio" id="nationalId" name="idType" value="National ID" required>
+                                    <label for="nationalId">National ID</label>
+                                </div>
+                                <div class="checkbox-option">
+                                    <input type="radio" id="votersCard" name="idType" value="Voter's Card">
+                                    <label for="votersCard">Voter's Card</label>
+                                </div>
+                                <div class="checkbox-option">
+                                    <input type="radio" id="passport" name="idType" value="International Passport">
+                                    <label for="passport">International Passport</label>
+                                </div>
+                                <div class="checkbox-option">
+                                    <input type="radio" id="driversLicense" name="idType" value="Driver's License">
+                                    <label for="driversLicense">Driver's License</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="idNumber">ID Number</label>
+                            <input type="text" id="idNumber" class="form-control" placeholder="Enter your ID number" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="issueDate">Issue Date</label>
+                            <input type="date" id="issueDate" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="expiryDate">Expiry Date</label>
+                            <input type="date" id="expiryDate" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <!-- SECTION D: OCCUPATION & INCOME -->
+                    <h3 class="form-section-title">SECTION D: OCCUPATION & INCOME</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="occupation">Occupation</label>
+                            <input type="text" id="occupation" class="form-control" placeholder="Enter your occupation" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="employer">Employer/Business Name</label>
+                            <input type="text" id="employer" class="form-control" placeholder="Enter employer/business name" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="businessNature">Nature of Business</label>
+                            <input type="text" id="businessNature" class="form-control" placeholder="Enter nature of business" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Source of Income</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="salary" name="incomeSource" value="Salary" required>
+                                    <label for="salary">Salary</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="business" name="incomeSource" value="Business">
+                                    <label for="business">Business</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="otherIncome" name="incomeSource" value="Other">
+                                    <label for="otherIncome">Other</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Monthly Income Range</label>
+                            <div class="radio-group">
+                                <div class="radio-option">
+                                    <input type="radio" id="below50k" name="incomeRange" value="Below ₦50,000" required>
+                                    <label for="below50k">Below ₦50,000</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="50k-200k" name="incomeRange" value="₦50,000–₦200,000">
+                                    <label for="50k-200k">₦50,000–₦200,000</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="200k-500k" name="incomeRange" value="₦200,000–₦500,000">
+                                    <label for="200k-500k">₦200,000–₦500,000</label>
+                                </div>
+                                <div class="radio-option">
+                                    <input type="radio" id="above500k" name="incomeRange" value="Above ₦500,000">
+                                    <label for="above500k">Above ₦500,000</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- SECTION E: NEXT OF KIN -->
+                    <h3 class="form-section-title">SECTION E: NEXT OF KIN</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="kinName">Full Name</label>
+                            <input type="text" id="kinName" class="form-control" placeholder="Enter next of kin's full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="kinRelationship">Relationship</label>
+                            <input type="text" id="kinRelationship" class="form-control" placeholder="Enter relationship" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="kinPhone">Phone Number</label>
+                            <input type="tel" id="kinPhone" class="form-control" placeholder="Enter next of kin's phone number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="kinAddress">Address</label>
+                            <input type="text" id="kinAddress" class="form-control" placeholder="Enter next of kin's address" required>
+                        </div>
+                    </div>
+                    
+                    <!-- SECTION F: DECLARATION -->
+                    <h3 class="form-section-title">SECTION F: DECLARATION</h3>
+                    <div class="declaration">
+                        <p>I, the undersigned, certify that the information provided is true and correct. I authorize Oradex Limited to verify all provided details for account processing purposes.</p>
+                    </div>
+                    
+                    <div class="signature-area">
+                        <div class="signature-group">
+                            <label for="signature">Signature</label>
+                            <input type="text" id="signature" class="form-control" placeholder="Enter your full name as signature" required>
+                        </div>
+                        <div class="signature-group">
+                            <label for="signatureDate">Date</label>
+                            <input type="date" id="signatureDate" class="form-control" required>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-submit">Submit KYC Form</button>
+                </form>
+                
+                <!-- Success Message (Hidden by default) -->
+                <div id="successMessage" class="success-message">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h2>Thank You!</h2>
+                    <p>Your KYC form has been submitted successfully.</p>
+                    <p>Our team will review your information and contact you shortly to complete your account opening process.</p>
+                    <a href="bank.html" class="btn btn-altbank" style="margin-top: 20px;">Return to Alternative Bank Page</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<!-- Footer -->  
+<footer>  
+    <div class="container">  
+        <div class="footer-content">  
+            <div class="footer-logo">  
+                <h2>ORADEX<sup style="font-size: 15px;">&trade;</sup> <span>LIMITED</span></h2>  
+            </div>  
+            <p style="margin-top: -20px; margin-bottom: 5px; font-size: 15px;">Trust With Diversity</p>  
+            <p class="copyright">&copy; 2025 ORADEX LIMITED. All Rights Reserved.</p>  
+            <div class="disclaimer">  
+                <p>Oradex Limited is a CAC-registered company <br>(RC: 8496771) providing innovative solutions across technology, agriculture, and business consultancy.</p>  
+            </div>  
+        </div>  
+    </div>  
+</footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const isActive = navLinks.classList.contains('active');
+            mobileMenuBtn.innerHTML = isActive 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+
+        // Form submission
+        document.getElementById('kycForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const formData = {
+                fullName: document.getElementById('fullName').value,
+                dob: document.getElementById('dob').value,
+                gender: document.querySelector('input[name="gender"]:checked').value,
+                maritalStatus: document.querySelector('input[name="maritalStatus"]:checked').value,
+                nationality: document.getElementById('nationality').value,
+                stateOfOrigin: document.getElementById('stateOfOrigin').value,
+                lga: document.getElementById('lga').value,
+                residentialAddress: document.getElementById('residentialAddress').value,
+                city: document.getElementById('city').value,
+                phoneNumber: document.getElementById('phoneNumber').value,
+                email: document.getElementById('email').value,
+                nin: document.getElementById('nin').value,
+                bvn: document.getElementById('bvn').value,
+                idType: document.querySelector('input[name="idType"]:checked').value,
+                idNumber: document.getElementById('idNumber').value,
+                issueDate: document.getElementById('issueDate').value,
+                expiryDate: document.getElementById('expiryDate').value,
+                occupation: document.getElementById('occupation').value,
+                employer: document.getElementById('employer').value,
+                businessNature: document.getElementById('businessNature').value,
+                incomeSource: document.querySelector('input[name="incomeSource"]:checked').value,
+                incomeRange: document.querySelector('input[name="incomeRange"]:checked').value,
+                kinName: document.getElementById('kinName').value,
+                kinRelationship: document.getElementById('kinRelationship').value,
+                kinPhone: document.getElementById('kinPhone').value,
+                kinAddress: document.getElementById('kinAddress').value,
+                signature: document.getElementById('signature').value,
+                signatureDate: document.getElementById('signatureDate').value
+            };
+            
+            // Send form data via email (using Formspree or similar service)
+            // For now, we'll just show the success message
+            // In production, you would replace this with actual form submission
+            
+            // Hide form and show success message
+            document.getElementById('kycForm').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Scroll to success message
+            document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+            
+            // In a real implementation, you would send the data to your server
+            // Example using Formspree:
+            /*
+            fetch('https://formspree.io/f/your-form-id', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Show success message
+                document.getElementById('kycForm').style.display = 'none';
+                document.getElementById('successMessage').style.display = 'block';
+                document.getElementById('successMessage').scrollIntoView({ behavior: 'smooth' });
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting your form. Please try again.');
+            });
+            */
+        });
+
+        // Set today's date as default for signature date
+        document.getElementById('signatureDate').valueAsDate = new Date();
+    </script>
+</body>
+</html>

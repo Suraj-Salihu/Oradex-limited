@@ -117,6 +117,7 @@
             top: 0;
             left: 0;
             width: 100%;
+            height: 85px;
             background-color: white;
             box-shadow: var(--shadow);
             z-index: 1000;
@@ -124,7 +125,7 @@
         }
 
         .header-scrolled {
-            padding: 5px 0;
+            padding: 15px 0;
         }
 
         nav {
@@ -197,8 +198,9 @@
             display: none;
             background: none;
             border: none;
-            font-size: 24px;
+            font-size: 25px;
             cursor: pointer;
+            margin-top: -15px;
             color: var(--primary);
         }
         
@@ -240,50 +242,86 @@
   }
 }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 180px 0 100px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
+/* ===========================
+   HERO SECTION
+=========================== */
+.hero {
+    position: relative;
+    height: 100vh; /* full screen height */
+    background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    color: white;
+    text-align: center;
+    overflow: hidden;
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTAwMCAxMDAwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMwMDJGNzEiLz48cGF0aCBkPSJNMCA1MDBMMTAwMCA1MDBMMTAwMCA3MDBMMCA3MDBaIiBmaWxsPSIjMWEzYTVmIiBmaWxsLW9wYWNpdHk9IjAuNSIvPjxwYXRoIGQ9Ik0wIDMwMEwxMDAwIDMwMEwxMDAwIDUwMEwwIDUwMFoiIGZpbGw9IiMxYTNhNWYiIGZpbGwtb3BhY2l0eT0iMC4zIi8+PC9zdmc+');
-            opacity: 0.1;
-        }
+    /* Center hero content */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 800px;
-            margin: 0 auto;
-        }
+/* Animated background overlay */
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('images/oradex.jpg') no-repeat center center / cover;
+    opacity: 0.25;
+    z-index: 0;
+    animation: heroSlide 18s infinite ease-in-out;
+}
 
-        .hero h1 {
-            font-size: 48px;
-            margin-bottom: 20px;
-            color: white;
-            animation: fadeInUp 1s ease;
-        }
+/* Background slideshow animation */
+@keyframes heroSlide {
+    0%   { background-image: url('images/oradex1.jpg'); }
+    33%  { background-image: url('images/oradex2.jpg'); }
+    66%  { background-image: url('images/oradex3.jpg'); }
+    100% { background-image: url('images/oradex4.jpg'); }
+}
 
-        .hero p {
-            font-size: 20px;
-            margin-bottom: 30px;
-            animation: fadeInUp 1s ease 0.2s both;
-        }
+/* Content inside hero */
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
-        .hero .btn {
-            animation: fadeInUp 1s ease 0.4s both;
-        }
+/* Heading styles */
+.hero h1 {
+    margin-bottom: 20px;
+    color: white;
+    animation: fadeInUp 1s ease;
+}
+
+/* Paragraph styles */
+.hero p {
+    font-size: 20px;
+    margin-bottom: 30px;
+    margin-top: -20px;
+    animation: fadeInUp 1s ease 0.2s both;
+}
+
+/* Button animation */
+.hero .btn {
+    animation: fadeInUp 1s ease 0.4s both;
+}
+
+/* Optional fadeInUp animation if not already defined */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
         /* About Section */
         .about {
@@ -380,7 +418,8 @@
         .member-role {
             color: var(--accent);
             font-weight: 600;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
+            margin-top: -12px;
         }
 
         /* Services Section */
@@ -615,9 +654,72 @@
             color: rgba(255, 255, 255, 0.7);
         }
 
+/* Social Section */
+.social {
+  background-color: var(--light);
+  padding: 40px 0;
+  text-align: center;
+}
+.social-top {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 25px;
+  flex-wrap: nowrap;
+}
+.social-bottom {
+  margin-top: 25px;
+}
+
+/* Buttons */
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 20px;
+  background-color: white;
+  border-radius: 5px;
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 400;
+  transition: var(--transition);
+  box-shadow: var(--shadow);
+}
+
+.social-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.social-link i {
+  margin-right: 10px;
+  font-size: 15px;
+}
+
+/* Colors */
+.facebook {
+  color: #3b5998;
+}
+
+.instagram {
+  color: #E1306C;
+}
+
+.fraud {
+  color: red;
+}
+
+.fraud i {
+    animation: blink 1.5s infinite alternate;
+}
+
+@keyframes blink {
+    from { opacity: 1; }
+    to { opacity: 0.6; }
+}
+
         /* Footer */
         footer {
-            background-color: var(--dark);
+            background-color: var(--primary);
             color: white;
             padding: 30px 0 20px;
             text-align: center;
@@ -643,9 +745,18 @@
         }
 
         .copyright {
-            margin-top: 15px;
-            font-size: 14px;
+            margin-top: 20px;
+            margin-bottom: -15px;
+            font-size: 13px;
             opacity: 0.8;
+        }
+
+        .disclaimer {
+            max-width: 800px;
+            margin: 20px auto 0;
+            font-size: 12px;
+            opacity: 0.7;
+            line-height: 1.5;
         }
 
         /* Animations */
@@ -750,7 +861,7 @@
                     <a href="#home">
                         <img src="images/logo.png" alt="ORADEX Logo">
                     </a>
-                    <h1 style="margin-left: -10px;">ORADEX <span>LIMITED</span></h1>
+                    <h1 style="margin-left: -10px; font-weight: bold; font-size: 24px;">ORADEX<sup style="font-size: 10px;">&trade;</sup> <span>LIMITED</span></h1>
                 </div>
                 <button class="mobile-menu-btn" id="mobileMenuBtn">
                     <i class="fas fa-bars"></i>
@@ -771,7 +882,7 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1>ORADEX LIMITED</h1>
+                <h1 style="font-size: 25px;">ORADEX<sup style="font-size: 20px;">&trade;</sup> LIMITED</h1>
                 <p>Trust with Diversity</p>
                 <a href="#services" class="btn">Our Services</a>
             </div>
@@ -785,7 +896,7 @@
             <div class="about-content">
                 <div class="about-text">
                     <h3>About Us</h3>
-                    <p>Oradex Limited is a multidisciplinary company committed to delivering innovative, sustainable, and people-centered solutions across multiple sectors. Founded with the vision of creating impact-driven enterprises, Oradex Limited operates with the core values of trust, diversity, and innovation while seeking to bridge gaps between people, businesses, and opportunities.</p>
+                    <p>Oradex Limited is a multidisciplinary companycommitted to delivering innovative, sustainable, and people-centered solutions across multiple sectors. Founded with  the vision  of  creating impact-driven enterprises, Oradex Limited operates with the core values of trust, diversity, and innovation while seeking to bridge gaps between people, businesses, and opportunities.</p>
                     
                     <h3>Our Mission</h3>
                     <p>To provide innovative and sustainable solutions that empower individuals, businesses, and communities while upholding trust, diversity, and long-term value creation.</p>
@@ -821,7 +932,7 @@
                     </div>
                     <div class="member-content">
                         <h3>Onalaja Rasheed Abiola</h3>
-                        <div class="member-role">CEO & Founder</div>
+                        <div class="member-role" style="text-align: center;">CEO & Founder</div>
                         <p>Dynamic entrepreneur and business innovator with a strong background in agriculture, technology, and business management. Founder of Oradex Limited, Stadia Agric Technology, and Billsdex.</p>
                         <p>Holds a Bachelor's degree in Plant Physiology and Crop Production from the Federal University of Agriculture, Abeokuta, and a mini-MBA from Tekedia Institute.</p>
                         <p>Passionate about building sustainable, people-centered enterprises that deliver both value and impact.</p>
@@ -832,8 +943,8 @@
                         <img src="images/asceo.png" alt="Assistant CEO">
                     </div>
                     <div class="member-content">
-                        <h3>Sample Name</h3>
-                        <div class="member-role">Assistant CEO</div>
+                        <h3 style="text-align: center;">Sample Name</h3>
+                        <div class="member-role" style="text-align: Center;">Assist. CEO</div>
                         <p>This is a sample description for a team member. we can replace this text and the image above with real information later.</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum.</p>
                         <p>This is just a placeholder content to show how the team member profile will appear on the website.</p>
@@ -860,7 +971,7 @@
                             <li>Alternative Bank Registration</li>
                             <li>Products & Services</li>
                         </ul>
-                        <a href="bank.html" class="btn-service">Inquire About This Service</a>
+                        <a href="alternative.html" class="btn-service">Inquire About This Service</a>
                     </div>
                 </div>
 
@@ -874,7 +985,7 @@
                         <ul class="service-list">
                             <li>CAC Business Name Registration</li>
                             <li>Limited Liability Company Incorporation</li>
-                            <li>NGO, Foundation, Mosque, Club & Association Registration</li>
+                            <li>NGO, Foundation, Club & Association Registration</li>
                             <li>CAC Annual Returns & Post-Incorporation Filings</li>
                             <li>Trademark Registration</li>
                             <li>SCUML Certificate & Export License (EFCC Compliance)</li>
@@ -915,7 +1026,7 @@
                             <li>Luxurious Shortlets & Service Apartments</li>
                             <li>Housing Agency Services</li>
                             <li>Shops & Space Renting</li>
-                            <li>Property Sales & Management</li>
+                            <li>Property Sales &Management</li>
                         </ul>
                         <a href="#" class="btn-service">Inquire About This Service</a>
                     </div>
@@ -958,49 +1069,49 @@
     <!-- Accreditation Section -->
     <section class="accreditation" id="accreditation">
         <div class="container">
-            <h2 class="section-title">Accreditation & Registration Bodies</h2>
+            <h2 class="section-title" style="font-size: 20px;">Accreditation & Registration Bodies</h2>
             <div class="accreditation-grid">
                 <div class="accreditation-item">
                     <div class="accreditation-icon">
                         <img src="images/cac.png" alt="CAC">
                     </div>
                     <h4>CAC</h4>
-                    <p>Corporate Affairs Commission – Company & Business Name Registration</p>
+                    <p>Corporate Affairs Commission <br>–Company & Business Name Registration</p>
                 </div>
                 <div class="accreditation-item">
                     <div class="accreditation-icon">
                         <img src="images/first.png" alt="FIRS">
                     </div>
                     <h4>FIRS</h4>
-                    <p>Federal Inland Revenue Service – TIN, Tax Clearance</p>
+                    <p>Federal Inland Revenue Service <br>–TIN, Tax Clearance</p>
                 </div>
                 <div class="accreditation-item">
                     <div class="accreditation-icon">
                         <img src="images/jtb.png" alt="JTB">
                     </div>
                     <h4>JTB</h4>
-                    <p>Joint Tax Board – TIN Registration</p>
+                    <p>Joint Tax Board <br>–TIN Registration</p>
                 </div>
                 <div class="accreditation-item">
                     <div class="accreditation-icon">
                         <img src="images/scuml.png" alt="SCUML">
                     </div>
                     <h4>SCUML</h4>
-                    <p>Special Control Unit Against Money Laundering – Compliance Certificates & Export License</p>
+                    <p>Special Control Unit Against Money Laundering <br>–Compliance Certificates & Export License</p>
                 </div>
                 <div class="accreditation-item">
                     <div class="accreditation-icon">
                         <img src="images/npc.png" alt="NPC">
                     </div>
                     <h4>NPC</h4>
-                    <p>National Population Commission – Birth & Death Certificates</p>
+                    <p>National Population Commission <br>–Birth & Death Certificates</p>
                 </div>
                 <div class="accreditation-item">
                     <div class="accreditation-icon">
                         <img src="images/nimc.png" alt="NIMC">
                     </div>
                     <h4>NIMC</h4>
-                    <p>National Identity Management Commission – NIN Services</p>
+                    <p>National Identity Management Commission <br>–NIN Services</p>
                 </div>
                 <div class="accreditation-item">
                     <div class="accreditation-icon">
@@ -1016,12 +1127,12 @@
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
-            <h2 class="section-title">Contact Us</h2>
+            <h2 class="section-title" style="margin-bottom: 25px;">Contact Us</h2>
             <div class="contact-container">
-                <div class="contact-info" style="font-size: 17px; margin-left: -10px;">
+                <div class="contact-info" style="font-size: 15px; margin-left: -10px;">
                     <div class="contact-details">
                         <p><i class="fas fa-map-marker-alt"></i> 31, Igboolomu Road, Agric, Isawo, Ikorodu, Lagos, Nigeria</p>
-                        <p><i class="fas fa-envelope"></i> <a href="mailto:info@oradexgmail.com">info@oradexgmail.com</a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:info@oradexgmail.com">info@oradexlimitedgmail.com</a></p>
                         <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/2348144275777">+234 814 427 5777</a></p>
                     </div>
                     <p>Ready to get started? Contact us today for professional and reliable services.</p>
@@ -1066,19 +1177,49 @@
             </div>
         </div>
     </section>
+    
+<!-- Social Section -->
+<section class="social" id="social">
+  <div class="container">
+    <h2 class="section-title" style="font-size: 20px;">Connect with Oradex Limited</h2>
+    <p style="font-size: 15px; text-align: center; margin-top: -20px;">
+      Stay updated with the latest news, offers, And services from Oradex Limited.
+    </p>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <h2>ORADEX <span>LIMITED</span></h2>
-                </div>
-                <p>RC: 8496771</p>
-                <p class="copyright">&copy; 2023 ORADEX LIMITED. All Rights Reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <!-- Facebook + Instagram on the same line -->
+    <div class="social-top">
+      <a href="https://www.facebook.com/share/1FpL8K76Yx/" class="social-link facebook" target="_blank">
+        <i class="fab fa-facebook-f"></i> Facebook
+      </a>
+      <a href="https://www.instagram.com/oradexhomes?igsh=a2RlcXk3ODJ4bHR3" class="social-link instagram" target="_blank">
+        <i class="fab fa-instagram"></i> Instagram
+      </a>
+    </div>
+
+    <!-- Fraud Reporting below -->
+    <div class="social-bottom">
+      <a href="https://oradexlimited/contact-us/" class="social-link fraud" target="_blank">
+        <i class="fas fa-exclamation-triangle"></i> Fraud Reporting
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->  
+<footer>  
+    <div class="container">  
+        <div class="footer-content">  
+            <div class="footer-logo">  
+                <h2>ORADEX<sup style="font-size: 15px;">&trade;</sup> <span>LIMITED</span></h2>  
+            </div>  
+            <p style="margin-top: -20px; margin-bottom: 5px; font-size: 15px;">Trust With Diversity</p>  
+            <p class="copyright">&copy; 2025 ORADEX LIMITED. All Rights Reserved.</p>  
+            <div class="disclaimer">  
+                <p>Oradex Limited is a CAC-registered company <br>(RC: 8496771) providing innovative solutions across technology, agriculture, and business consultancy.</p>  
+            </div>  
+        </div>  
+    </div>  
+</footer>
 
     <script>
         // Mobile Menu Toggle - Fixed
@@ -1154,20 +1295,28 @@
             });
         });
 
-        // Service inquiry buttons
-        document.querySelectorAll('.btn-service').forEach(button => {
-            button.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                
-                const serviceCard = this.closest('.service-card');
-                const serviceName = serviceCard.querySelector('h3').textContent;
-                const message = `Hello ORADEX LIMITED, I'm interested in your ${serviceName} services. Please provide more information.`;
-                const encodedMessage = encodeURIComponent(message);
-                const whatsappURL = `https://wa.me/2348144275777?text=${encodedMessage}`;
-                window.open(whatsappURL, '_blank');
-            });
-        });
+// Service inquiry buttons
+document.querySelectorAll('.btn-service').forEach(button => {
+    button.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        const serviceCard = this.closest('.service-card');
+        const serviceName = serviceCard.querySelector('h3').textContent.trim();
+
+        // Redirect only Banking Support to alternative.html
+        if (serviceName === "Banking Support") {
+            window.location.href = "alternative bank.html";
+            return;
+        }
+
+        // Default: open WhatsApp for other services
+        const message = `Hello ORADEX LIMITED, I'm interested in your ${serviceName} services. Please provide more information.`;
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappURL = `https://wa.me/2348144275777?text=${encodedMessage}`;
+        window.open(whatsappURL, '_blank');
+    });
+});
 
         // Contact form submission
         document.getElementById('contactForm').addEventListener('submit', function(e) {
