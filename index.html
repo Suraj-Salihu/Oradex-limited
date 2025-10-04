@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORADEX LIMITED - Trust with Diversity</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #002F71;
+            --secondary: #1a3a5f;
+            --accent: #4a90e2;
+            --light: #f5f7fa;
+            --gray: #A6A6A6;
+            --dark: #333;
+            --success: #28a745;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+
+        .btn-service {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            text-align: center;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .btn-service:hover {
+            background-color: var(--accent);
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .header-scrolled {
+            padding: 5px 0;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo img {
+            margin-left: -20px;
+            height: 50px;
+            width: auto;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            margin: 0;
+            color: var(--primary);
+            margin-top: -10px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--primary);
+        }
+        
+        /* Hide menu by default on mobile */
+.nav-links {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  flex-direction: column;
+  background: white;
+  position: absolute;
+  top: 70px; /* below header */
+  right: 0;
+  width: 220px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  padding: 0 20px;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+/* Smoothly show when active */
+.nav-links.active {
+  max-height: 500px;
+  opacity: 1;
+  padding: 20px;
+}
+
+/* Show hamburger only on mobile */
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .nav-links {
+    width: 100%; /* full width on small screens */
+  }
+
+  .nav-links li {
+    margin: 15px 0;
+  }
+}
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 180px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiB2aWV3Qm94PSIwIDAgMTAwMCAxMDAwIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiMwMDJGNzEiLz48cGF0aCBkPSJNMCA1MDBMMTAwMCA1MDBMMTAwMCA3MDBMMCA3MDBaIiBmaWxsPSIjMWEzYTVmIiBmaWxsLW9wYWNpdHk9IjAuNSIvPjxwYXRoIGQ9Ik0wIDMwMEwxMDAwIDMwMEwxMDAwIDUwMEwwIDUwMFoiIGZpbGw9IiMxYTNhNWYiIGZpbGwtb3BhY2l0eT0iMC4zIi8+PC9zdmc+');
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: white;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero .btn {
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        /* About Section */
+        .about {
+            background-color: white;
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Team Section */
+        .team {
+            background-color: var(--light);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .team-member {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .team-member.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .member-image {
+            height: 300px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .team-member:hover .member-image img {
+            transform: scale(1.05);
+        }
+
+        .member-content {
+            padding: 25px;
+        }
+
+        .member-content h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+            color: var(--primary);
+        }
+
+        .member-role {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        /* Services Section */
+        .services {
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            height: 120px;
+            background-color: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: var(--accent);
+        }
+
+        .service-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .service-content h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .service-list {
+            list-style: none;
+            flex-grow: 1;
+            margin-bottom: 20px;
+        }
+
+        .service-list li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .service-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        /* Accreditation Section */
+        .accreditation {
+            background-color: var(--light);
+        }
+
+        .accreditation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .accreditation-item {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .accreditation-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .accreditation-icon {
+            height: 80px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .accreditation-icon img {
+            max-height: 100%;
+            max-width: 100%;
+        }
+
+        .accreditation-item h4 {
+            font-size: 16px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+
+        .accreditation-item p {
+            font-size: 14px;
+            color: var(--dark);
+            opacity: 0.8;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+        }
+
+        .contact h2 {
+            color: white;
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-details {
+            margin-bottom: 30px;
+        }
+
+        .contact-details p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-details i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .contact-details a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .contact-details a:hover {
+            color: var(--accent);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: white;
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 30px 0 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo {
+            margin-bottom: 15px;
+        }
+
+        .footer-logo h2 {
+            color: white;
+            margin: 0;
+        }
+
+        .footer-logo span {
+            color: var(--accent);
+        }
+
+        .copyright {
+            margin-top: 15px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+                box-shadow: var(--shadow);
+                transform: translateY(-100%);
+                opacity: 0;
+                transition: var(--transition);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .hero {
+                padding: 150px 0 80px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .services-grid, .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-info {
+                font-size: 20px;
+            }
+            
+            .accreditation-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+
+            .logo h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <a href="#home">
+                        <img src="images/logo.png" alt="ORADEX Logo">
+                    </a>
+                    <h1 style="margin-left: -10px;">ORADEX <span>LIMITED</span></h1>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#team">Team</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#accreditation">Accreditations</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>ORADEX LIMITED</h1>
+                <p>Trust with Diversity</p>
+                <a href="#services" class="btn">Our Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About ORADEX LIMITED</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>About Us</h3>
+                    <p>Oradex Limited is a multidisciplinary company committed to delivering innovative, sustainable, and people-centered solutions across multiple sectors. Founded with the vision of creating impact-driven enterprises, Oradex Limited operates with the core values of trust, diversity, and innovation while seeking to bridge gaps between people, businesses, and opportunities.</p>
+                    
+                    <h3>Our Mission</h3>
+                    <p>To provide innovative and sustainable solutions that empower individuals, businesses, and communities while upholding trust, diversity, and long-term value creation.</p>
+                    
+                    <h3>Our Vision</h3>
+                    <p>To be a trusted and diversified brand that delivers excellence across multiple industries and leaves a positive footprint in every community we serve.</p>
+                    
+                    <h3>Core Values</h3>
+                    <ul class="service-list">
+                        <li><strong>Trust</strong> - We build relationships on integrity and transparency.</li>
+                        <li><strong>Diversity</strong> - We embrace opportunities across industries and communities.</li>
+                        <li><strong>Innovation</strong> - We create solutions that address today's needs and anticipate tomorrow's.</li>
+                        <li><strong>Sustainability</strong> - We prioritize long-term growth and community impact.</li>
+                    </ul>
+                    
+                    <p><strong>Motto:</strong> "Trust with Diversity"</p>
+                </div>
+                <div class="about-image">
+                    <img src="images/oradex.png" alt="ORADEX LIMITED Business Operations">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team" id="team">
+        <div class="container">
+            <h2 class="section-title">Our Leadership Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="images/ceo.jpg" alt="Onalaja Rasheed Abiola">
+                    </div>
+                    <div class="member-content">
+                        <h3>Onalaja Rasheed Abiola</h3>
+                        <div class="member-role">CEO & Founder</div>
+                        <p>Dynamic entrepreneur and business innovator with a strong background in agriculture, technology, and business management. Founder of Oradex Limited, Stadia Agric Technology, and Billsdex.</p>
+                        <p>Holds a Bachelor's degree in Plant Physiology and Crop Production from the Federal University of Agriculture, Abeokuta, and a mini-MBA from Tekedia Institute.</p>
+                        <p>Passionate about building sustainable, people-centered enterprises that deliver both value and impact.</p>
+                    </div>
+                </div>
+                <div class="team-member">
+                    <div class="member-image">
+                        <img src="images/asceo.png" alt="Assistant CEO">
+                    </div>
+                    <div class="member-content">
+                        <h3>Sample Name</h3>
+                        <div class="member-role">Assistant CEO</div>
+                        <p>This is a sample description for a team member. we can replace this text and the image above with real information later.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vitae eros eget tellus tristique bibendum.</p>
+                        <p>This is just a placeholder content to show how the team member profile will appear on the website.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+                <!-- Banking Support -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Banking Support</h3>
+                        <ul class="service-list">
+                            <li>Bank Account Opening</li>
+                            <li>Alternative Bank Registration</li>
+                            <li>Products & Services</li>
+                        </ul>
+                        <a href="bank.html" class="btn-service">Inquire About This Service</a>
+                    </div>
+                </div>
+
+                <!-- Registrations & Legal Services -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Registrations & Legal Services</h3>
+                        <ul class="service-list">
+                            <li>CAC Business Name Registration</li>
+                            <li>Limited Liability Company Incorporation</li>
+                            <li>NGO, Foundation, Mosque, Club & Association Registration</li>
+                            <li>CAC Annual Returns & Post-Incorporation Filings</li>
+                            <li>Trademark Registration</li>
+                            <li>SCUML Certificate & Export License (EFCC Compliance)</li>
+                            <li>Tax Clearance Certificate</li>
+                            <li>JTB & FIRS TIN Registration</li>
+                        </ul>
+                        <a href="#" class="btn-service">Inquire About This Service</a>
+                    </div>
+                </div>
+
+                <!-- Identity & Document Processing -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-id-card"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Identity & Document Processing</h3>
+                        <ul class="service-list">
+                            <li>NIN Registration, Reprint, Tracking, Verification & Modifications</li>
+                            <li>BVN Slip Retrieval</li>
+                            <li>Birth & Death Certificates (NPC)</li>
+                            <li>WAEC & NECO Certificate Retrieval</li>
+                            <li>State of Origin Certificate</li>
+                            <li>International Passport (New & Renewal)</li>
+                        </ul>
+                        <a href="#" class="btn-service">Inquire About This Service</a>
+                    </div>
+                </div>
+
+                <!-- Property & Accommodation -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Property & Accommodation</h3>
+                        <ul class="service-list">
+                            <li>Luxurious Shortlets & Service Apartments</li>
+                            <li>Housing Agency Services</li>
+                            <li>Shops & Space Renting</li>
+                            <li>Property Sales & Management</li>
+                        </ul>
+                        <a href="#" class="btn-service">Inquire About This Service</a>
+                    </div>
+                </div>
+
+                <!-- Utilities & Connectivity -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Utilities & Connectivity</h3>
+                        <ul class="service-list">
+                            <li>Prepaid Meter Processing</li>
+                            <li>SIM Card Registration</li>
+                            <li>Data Subscription Services</li>
+                        </ul>
+                        <a href="#" class="btn-service">Inquire About This Service</a>
+                    </div>
+                </div>
+
+                <!-- Logistics & Contracting -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <div class="service-content">
+                        <h3>Logistics & Contracting</h3>
+                        <ul class="service-list">
+                            <li>Logistics Services</li>
+                            <li>General Contracting & Supply</li>
+                        </ul>
+                        <a href="#" class="btn-service">Inquire About This Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accreditation Section -->
+    <section class="accreditation" id="accreditation">
+        <div class="container">
+            <h2 class="section-title">Accreditation & Registration Bodies</h2>
+            <div class="accreditation-grid">
+                <div class="accreditation-item">
+                    <div class="accreditation-icon">
+                        <img src="images/cac.png" alt="CAC">
+                    </div>
+                    <h4>CAC</h4>
+                    <p>Corporate Affairs Commission – Company & Business Name Registration</p>
+                </div>
+                <div class="accreditation-item">
+                    <div class="accreditation-icon">
+                        <img src="images/first.png" alt="FIRS">
+                    </div>
+                    <h4>FIRS</h4>
+                    <p>Federal Inland Revenue Service – TIN, Tax Clearance</p>
+                </div>
+                <div class="accreditation-item">
+                    <div class="accreditation-icon">
+                        <img src="images/jtb.png" alt="JTB">
+                    </div>
+                    <h4>JTB</h4>
+                    <p>Joint Tax Board – TIN Registration</p>
+                </div>
+                <div class="accreditation-item">
+                    <div class="accreditation-icon">
+                        <img src="images/scuml.png" alt="SCUML">
+                    </div>
+                    <h4>SCUML</h4>
+                    <p>Special Control Unit Against Money Laundering – Compliance Certificates & Export License</p>
+                </div>
+                <div class="accreditation-item">
+                    <div class="accreditation-icon">
+                        <img src="images/npc.png" alt="NPC">
+                    </div>
+                    <h4>NPC</h4>
+                    <p>National Population Commission – Birth & Death Certificates</p>
+                </div>
+                <div class="accreditation-item">
+                    <div class="accreditation-icon">
+                        <img src="images/nimc.png" alt="NIMC">
+                    </div>
+                    <h4>NIMC</h4>
+                    <p>National Identity Management Commission – NIN Services</p>
+                </div>
+                <div class="accreditation-item">
+                    <div class="accreditation-icon">
+                        <img src="images/ncc.png" alt="NCC">
+                    </div>
+                    <h4>NCC / Telecom</h4>
+                    <p>SIM Card Registration & Data Services</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info" style="font-size: 17px; margin-left: -10px;">
+                    <div class="contact-details">
+                        <p><i class="fas fa-map-marker-alt"></i> 31, Igboolomu Road, Agric, Isawo, Ikorodu, Lagos, Nigeria</p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:info@oradexgmail.com">info@oradexgmail.com</a></p>
+                        <p><i class="fab fa-whatsapp"></i> <a href="https://wa.me/2348144275777">+234 814 427 5777</a></p>
+                    </div>
+                    <p>Ready to get started? Contact us today for professional and reliable services.</p>
+                    <a href="https://wa.me/2348144275777" 
+                    class="btn btn-outline" 
+                   style="display: block; margin: 10px auto; width: fit-content;">
+                   WhatsApp Us</a>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control" placeholder="Your Phone Number">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Interested In</label>
+                            <select id="service" class="form-control">
+                                <option value="">Select a service</option>
+                                <option value="Banking Support">Banking Support</option>
+                                <option value="Registrations & Legal Services">Registrations & Legal Services</option>
+                                <option value="Identity & Document Processing">Identity & Document Processing</option>
+                                <option value="Property & Accommodation">Property & Accommodation</option>
+                                <option value="Utilities & Connectivity">Utilities & Connectivity</option>
+                                <option value="Logistics & Contracting">Logistics & Contracting</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" placeholder="Your Message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h2>ORADEX <span>LIMITED</span></h2>
+                </div>
+                <p>RC: 8496771</p>
+                <p class="copyright">&copy; 2023 ORADEX LIMITED. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle - Fixed
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const isActive = navLinks.classList.contains('active');
+            mobileMenuBtn.innerHTML = isActive 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+
+        // Service cards animation on scroll
+        const serviceCards = document.querySelectorAll('.service-card');
+        const teamMembers = document.querySelectorAll('.team-member');
+        
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        serviceCards.forEach(card => {
+            observer.observe(card);
+        });
+
+        teamMembers.forEach(member => {
+            observer.observe(member);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Service inquiry buttons
+        document.querySelectorAll('.btn-service').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                
+                const serviceCard = this.closest('.service-card');
+                const serviceName = serviceCard.querySelector('h3').textContent;
+                const message = `Hello ORADEX LIMITED, I'm interested in your ${serviceName} services. Please provide more information.`;
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappURL = `https://wa.me/2348144275777?text=${encodedMessage}`;
+                window.open(whatsappURL, '_blank');
+            });
+        });
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const service = document.getElementById('service').value;
+            const message = document.getElementById('message').value;
+            
+            // Create WhatsApp message
+            let whatsappMessage = `Hello ORADEX LIMITED,%0A%0A`;
+            whatsappMessage += `I would like to inquire about your services.%0A%0A`;
+            whatsappMessage += `Name: ${name}%0A`;
+            whatsappMessage += `Email: ${email}%0A`;
+            if (phone) whatsappMessage += `Phone: ${phone}%0A`;
+            if (service) whatsappMessage += `Service Interested In: ${service}%0A`;
+            whatsappMessage += `Message: ${message}%0A%0A`;
+            whatsappMessage += `Please contact me with more information.`;
+            
+            const whatsappURL = `https://wa.me/2348144275777?text=${whatsappMessage}`;
+            window.open(whatsappURL, '_blank');
+            
+            // Reset form
+            this.reset();
+            
+            // Show success message
+            alert('Thank you for your inquiry! You will be redirected to WhatsApp to complete your message.');
+        });
+    </script>
+</body>
+</html>
