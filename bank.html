@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Payment Required — Oradex Limited</title>
+  <style>
+    :root{
+      --bg:#f7fafc;
+      --card:#ffffff;
+      --accent:#1f2937;
+      --muted:#6b7280;
+      --cta:#0ea5a4;
+    }
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
+    body{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:linear-gradient(180deg, #eef2f7, var(--bg));
+      color:var(--accent);
+      padding:24px;
+    }
+    .wrap{
+      max-width:760px;
+      width:100%;
+      background:var(--card);
+      border-radius:12px;
+      box-shadow:0 10px 30px rgba(15,23,42,0.08);
+      padding:36px;
+      text-align:center;
+    }
+    h1{margin:0 0 8px;font-size:28px;letter-spacing:-0.4px;}
+    p.lead{margin:0 0 18px;color:var(--muted);font-size:16px;}
+    .box{
+      background:#f8fafc;
+      border:1px solid #e6eef6;
+      padding:18px;
+      border-radius:8px;
+      margin:18px auto;
+      display:inline-block;
+      text-align:left;
+      min-width:260px;
+    }
+    .field{font-weight:600;margin-bottom:6px;}
+    .value{color:var(--accent);font-size:18px;}
+    .cta{
+      display:inline-block;
+      margin-top:20px;
+      padding:10px 18px;
+      border-radius:8px;
+      text-decoration:none;
+      font-weight:600;
+      background:var(--cta);
+      color:white;
+    }
+    .note{margin-top:14px;color:var(--muted);font-size:13px;}
+    footer{margin-top:26px;color:#9aa0a6;font-size:13px;}
+    @media (max-width:420px){
+      .wrap{padding:20px}
+      h1{font-size:22px}
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap" role="main" aria-labelledby="site-title">
+    <h1 id="site-title">Payment Incomplete</h1>
+    <p class="lead">This project is awaiting final payment. Kindly complete the payment below to view or transfer full access.</p>
+
+    <div class="box" role="region" aria-label="payment details">
+      <div class="field">Pay to (Opay):</div>
+      <div class="value">6112954260</div>
+
+      <div style="height:10px;"></div>
+
+      <div class="field">Recipient:</div>
+      <div class="value">Suraj Salihu</div>
+    </div>
+
+    <a class="cta" href="tel:+6112954260" aria-label="Call Suraj Salihu">Call to confirm payment</a>
+
+    <p class="note">After paying, please send a payment confirmation (screenshot or transaction ID) to the contact number above so the site can be restored.</p>
+
+    <footer>
+      Oradex Limited — Site access restricted until payment is completed.
+    </footer>
+  </main>
+</body>
+</html>
